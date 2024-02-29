@@ -213,8 +213,8 @@ Route::prefix('users')->group( function(){
 	Route::view('user-cards', 'admin.apps.user-cards')->name('user-cards');
 });
 
-Route::prefix('clients')->name('clients.')->controller(ClientController::class)->group( function() {
-	Route::get('create-profile', 'createProfile')->name('create-profile');
+Route::prefix('commerciale')->name('commerciale.')->group( function() {
+	// Route::resource('client');
 });
 
 Route::view('bookmark', 'admin.apps.bookmark')->name('bookmark');
