@@ -12,4 +12,8 @@ class TypeClient extends Model
     protected $table = "type_client";
     protected $primaryKey = 'id_type_client';
     public $timestamps = false;
+
+    public function client() {
+        return $this->hasMany(Client::class, 'id_type_client');
+    }
 }

@@ -11,7 +11,7 @@ class ClientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,24 @@ class ClientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nom' => ['required', 'string', 'max:45'],
+            'prenom' => ['required', 'string', 'max:45'],
+            'adresse_num' => ['required', 'string', 'max:45'],
+            'adresse_voie' => ['required', 'string', 'max:45'],
+            'adresse_code_postal' => ['required', 'string', 'max:45'],
+            'adresse_complement' => ['nullable', 'string', 'max:45'],
+            'adresse_ville' => ['required', 'string', 'max:45'],
+            'adresse_pays' => ['required', 'string', 'max:45'],
+            'telephone' => ['required', 'string', 'max:45'],
+            'email' => ['required', 'email', 'max:45'],
+            'raison_social' => ['required', 'string', 'max:100'],
+            'nif_stat' => ['required', 'string', 'max:60'],
+            'bic' => ['required', 'string', 'max:45'],
+            'id_type_entreprise' => ['required', 'integer'],
+            'id_type_client' => ['required', 'integer'],
+            'accepte_mail_marketing' => ['required', 'in:O,N'],
+            'poste_contact' => ['required', 'string', 'max:45'],
+            'commentaire' => ['required', 'string', 'max:500'],
         ];
     }
 }

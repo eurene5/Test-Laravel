@@ -1,26 +1,28 @@
-@extends('layouts.admin.master')
 
-@section('title')Create Profile
- {{ $title }}
-@endsection
 
-@push('css')
-@endpush
+<?php $__env->startSection('title'); ?>Create Profile
+ <?php echo e($title); ?>
 
-@section('content')
-	@component('components.breadcrumb')
-		@slot('breadcrumb_title')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('css'); ?>
+<?php $__env->stopPush(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<?php $__env->startComponent('components.breadcrumb'); ?>
+		<?php $__env->slot('breadcrumb_title'); ?>
 			<h3 class="text-capitalize">Enregistrer un client</h3>
-		@endslot
+		<?php $__env->endSlot(); ?>
 		<li class="breadcrumb-item">Clients</li>
 		<li class="breadcrumb-item active text-capitalize">Créer un client</li>
-	@endcomponent
+	<?php echo $__env->renderComponent(); ?>
 	
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">
 	            <div>
-	                <form class="card" action="" method="POST">
+	                <form class="card" action="<?php echo e(route('commerciale.client.store')); ?>" method="post">
+						<?php echo csrf_field(); ?>
 	                    <div class="card-header pb-0">
 	                        <h4 class="card-title mb-0">Enregistrement d'un client</h4>
 	                        <div class="card-options">
@@ -44,7 +46,7 @@
 	                            <div class="col-sm-6 col-md-4">
 	                                <div class="mb-3">
 	                                    <label class="form-label text-uppercase" for="bic">Bic</label>
-	                                    <input class="form-control" type="email" placeholder="Bic" name="bic" />
+	                                    <input class="form-control" type="text" placeholder="Bic" name="bic" />
 	                                </div>
 	                            </div>
 	                            <div class="col-sm-6 col-md-4">
@@ -52,9 +54,9 @@
 	                                    <label class="form-label" for="id_type_entreprise">Type d&apos;entreprise</label>
 	                                    <select class="form-control" name="id_type_entreprise">
 
-											@foreach($typeEntreprises as $typeEntreprise)
-												<option value={{$typeEntreprise->id}}>{{$typeEntreprise->libelle}}</option>
-											@endforeach
+											<?php $__currentLoopData = $typeEntreprises; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $typeEntreprise): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+												<option value="<?php echo e($typeEntreprise->id_type_entreprise); ?>"><?php echo e($typeEntreprise->libelle); ?></option>
+											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             
                                         </select>
 	                                </div>
@@ -63,9 +65,9 @@
 	                                <div class="mb-3">
 	                                    <label class="form-label" for="id_type_client">Type de client</label>
 	                                    <select class="form-control" name="id_type_client">
-											@foreach($typeClients as $typeClient)
-												<option value={{$typeClient->id}}>{{$typeClient->libelle}}</option>
-											@endforeach
+											<?php $__currentLoopData = $typeClients; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $typeClient): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+												<option value="<?php echo e($typeClient->id_type_client); ?>"><?php echo e($typeClient->libelle); ?></option>
+											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
 	                                </div>
 	                            </div>
@@ -92,9 +94,9 @@
                                         <div class="mb-3">
                                             <label class="form-label" for="poste_contact">Poste</label>
                                             <select class="form-control" name="poste_contact">
-												@foreach($postes as $poste)
-												<option value={{$poste->libelle}}>{{$poste->libelle}}</option>
-												@endforeach
+												<?php $__currentLoopData = $postes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $poste): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+												<option value=<?php echo e($poste->libelle); ?>><?php echo e($poste->libelle); ?></option>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -147,11 +149,10 @@
 	                                <div class="mb-3">
 	                                    <label class="form-label" for="adresse_pays">Pays</label>
 	                                    <select class="form-control btn-square" name="adresse_pays">
-	                                        <option value="0">Madagascar</option>
-	                                        <option value="1">Germany</option>
-	                                        <option value="2">Canada</option>
-	                                        <option value="3">Usa</option>
-	                                        <option value="4">Aus</option>
+	                                        <option value="Madagascar">Madagascar</option>
+	                                        <option value="Germany">Germany</option>
+	                                        <option value="Canada">Canada</option>
+	                                        <option value="Usa">Usa</option>
 	                                    </select>
 	                                </div>
 	                            </div>
@@ -168,7 +169,7 @@
 	                        </div>
 	                    </div>
 	                    <div class="card-footer text-end">
-	                        <button class="btn btn-primary" type="submit">Ajouter ce client</button>
+	                        <button class="btn btn-primary">Ajouter ce client</button>
 	                    </div>
 	                </form>
 	            </div>
@@ -176,8 +177,11 @@
 	    </div>
 	</div>
 
-	
-	@push('scripts')
-	@endpush
 
-@endsection
+
+	
+	<?php $__env->startPush('scripts'); ?>
+	<?php $__env->stopPush(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Poem\Documents\Projets\viho-laravel-10\resources\views/admin/apps/commerciale/create-client.blade.php ENDPATH**/ ?>

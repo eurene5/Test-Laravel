@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Models\Client;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
@@ -214,7 +215,7 @@ Route::prefix('users')->group( function(){
 });
 
 Route::prefix('commerciale')->name('commerciale.')->group( function() {
-	// Route::resource('client');
+	Route::resource('client', ClientController::class)->except(('show'));
 });
 
 Route::view('bookmark', 'admin.apps.bookmark')->name('bookmark');

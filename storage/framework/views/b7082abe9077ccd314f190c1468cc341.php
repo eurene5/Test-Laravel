@@ -320,9 +320,10 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link menu-title <?php echo e(prefixActive('/clients')); ?>" href="javascript:void(0)"><i data-feather="users"></i><span>Clients</span></a>
-                        <ul class="nav-submenu menu-content" style="display: <?php echo e(prefixBlock('/clients')); ?>;">
-                            <li><a href="<?php echo e(route('clients.create-profile')); ?>" class="<?php echo e(routeActive('create-profile')); ?>">Créez le profil d&apos;un client</a></li>
+                        <a class="nav-link menu-title <?php echo e(prefixActive('/commerciale')); ?>" href="javascript:void(0)"><i data-feather="users"></i><span>Clients</span></a>
+                        <ul class="nav-submenu menu-content" style="display: <?php echo e(prefixBlock('/commeciale')); ?>;">
+                            <li><a href="<?php echo e(route('commerciale.client.create')); ?>" class="<?php echo e(routeActive('commerciale.client.create')); ?>">Créez le profil d&apos;un client</a></li>
+                            <li><a href="<?php echo e(route('commerciale.client.index')); ?>" class="<?php echo e(routeActive('commerciale.client.index')); ?>">Les clients</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

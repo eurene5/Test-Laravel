@@ -320,9 +320,10 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link menu-title {{ prefixActive('/clients') }}" href="javascript:void(0)"><i data-feather="users"></i><span>Clients</span></a>
-                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/clients') }};">
-                            <li><a href="{{ route('clients.create-profile') }}" class="{{routeActive('create-profile')}}">Créez le profil d&apos;un client</a></li>
+                        <a class="nav-link menu-title {{ prefixActive('/commerciale') }}" href="javascript:void(0)"><i data-feather="users"></i><span>Clients</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/commeciale') }};">
+                            <li><a href="{{ route('commerciale.client.create') }}" class="{{routeActive('commerciale.client.create')}}">Créez le profil d&apos;un client</a></li>
+                            <li><a href="{{ route('commerciale.client.index') }}" class="{{routeActive('commerciale.client.index')}}">Les clients</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Client extends Model
 {
@@ -11,7 +12,9 @@ class Client extends Model
 
     protected $table = "client";
     protected $primaryKey = 'id_client';
-    protected $fillable = ['nom',
+
+    protected $fillable = [
+        'nom',
         'prenom',
         'adresse_num',
         'adresse_voie',
@@ -24,18 +27,20 @@ class Client extends Model
         'raison_social',
         'nif_stat',
         'bic',
-        'id_type_clien',
-        'accepte_mail_marketing',
-        'poste_contact',
         'commentaire',
-        'date_creation'
+        'id_type_entreprise',
+        'id_type_client',
+        'poste_contact',
+        'accepte_mail_marketing',
     ];
 
-    protected $casts = [
-        'date_creation' => 'datetime',
-    ];
+    public function typeClient () : BelongsTo {
+        return $this->belongsTo(TypeClient::class, 'id_client');
+    }
 
-    public $incrementing = true;
+    public function typeEntreprise () : BelongsTo {
+        return $this->belongsTo(TypeEntreprise::class, 'id_client');
+    }
 
     public $timestamps = false;
 }

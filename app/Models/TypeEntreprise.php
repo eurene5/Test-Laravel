@@ -12,4 +12,8 @@ class TypeEntreprise extends Model
     protected $table = "type_entreprise";
     protected $primaryKey = 'id_type_entreprise';
     public $timestamps = false;
+
+    public function client() {
+        return $this->hasMany(Client::class, 'id_type_entreprise');
+    }
 }
