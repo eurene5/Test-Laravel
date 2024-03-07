@@ -320,10 +320,21 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link menu-title {{ prefixActive('/commerciale') }}" href="javascript:void(0)"><i data-feather="users"></i><span>Clients</span></a>
-                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/commeciale') }};">
-                            <li><a href="{{ route('commerciale.client.create') }}" class="{{routeActive('commerciale.client.create')}}">Créez le profil d&apos;un client</a></li>
-                            <li><a href="{{ route('commerciale.client.index') }}" class="{{routeActive('commerciale.client.index')}}">Les clients</a></li>
+                        <a class="nav-link menu-title {{ prefixActive('/commerciale')}}" href="javascript:void(0)"><i data-feather="bookmark"></i><span>Gestion commerciale</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/commerciale')}};">
+                            <li>
+                                <a class="submenu-title" href="javascript:void(0)">CLIENTS<span class="sub-arrow"><i  class="icofont icofont-people m-2"></i></span></a>
+                                <ul class="nav-sub-childmenu submenu-content">
+                                    <li><a href="{{ route('commerciale.client.create')}}" class="{{routeActive('commerciale.client.create')}}">Ajouter un client</a></li>
+                                    <li><a href="{{ route('commerciale.client.index')}}" class="{{routeActive('commerciale.client.index')}}">Les clients</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="submenu-title" href="javascript:void(0)">COMMANDES<span class="sub-arrow"><i class="fa fa-chevron-right"></i></span></a>
+                                <ul class="nav-sub-childmenu submenu-content">
+                                    <li><a href="{{ route('commerciale.vente.index')}}" class="{{routeActive('commerciale.vente.index')}}">Saisie Commande</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li class="dropdown">

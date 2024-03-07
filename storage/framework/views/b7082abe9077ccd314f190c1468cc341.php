@@ -320,10 +320,21 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link menu-title <?php echo e(prefixActive('/commerciale')); ?>" href="javascript:void(0)"><i data-feather="users"></i><span>Clients</span></a>
-                        <ul class="nav-submenu menu-content" style="display: <?php echo e(prefixBlock('/commeciale')); ?>;">
-                            <li><a href="<?php echo e(route('commerciale.client.create')); ?>" class="<?php echo e(routeActive('commerciale.client.create')); ?>">Créez le profil d&apos;un client</a></li>
-                            <li><a href="<?php echo e(route('commerciale.client.index')); ?>" class="<?php echo e(routeActive('commerciale.client.index')); ?>">Les clients</a></li>
+                        <a class="nav-link menu-title <?php echo e(prefixActive('/commerciale')); ?>" href="javascript:void(0)"><i data-feather="bookmark"></i><span>Gestion commerciale</span></a>
+                        <ul class="nav-submenu menu-content" style="display: <?php echo e(prefixBlock('/commerciale')); ?>;">
+                            <li>
+                                <a class="submenu-title" href="javascript:void(0)">CLIENTS<span class="sub-arrow"><i  class="icofont icofont-people m-2"></i></span></a>
+                                <ul class="nav-sub-childmenu submenu-content">
+                                    <li><a href="<?php echo e(route('commerciale.client.create')); ?>" class="<?php echo e(routeActive('commerciale.client.create')); ?>">Ajouter un client</a></li>
+                                    <li><a href="<?php echo e(route('commerciale.client.index')); ?>" class="<?php echo e(routeActive('commerciale.client.index')); ?>">Les clients</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="submenu-title" href="javascript:void(0)">COMMANDES<span class="sub-arrow"><i class="fa fa-chevron-right"></i></span></a>
+                                <ul class="nav-sub-childmenu submenu-content">
+                                    <li><a href="<?php echo e(route('commerciale.vente.index')); ?>" class="<?php echo e(routeActive('commerciale.vente.index')); ?>">Saisie Commande</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li class="dropdown">

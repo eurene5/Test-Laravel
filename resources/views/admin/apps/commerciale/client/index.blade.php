@@ -59,9 +59,6 @@
                                 </tbody>
 	                        </table>
 	                    </div>
-                        <div class="d-flex">
-                            {{ $clients->links() }}
-                        </div>
 	                </div>
 	            </div>
 	        </div>

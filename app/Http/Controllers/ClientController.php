@@ -17,7 +17,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('admin.apps.commerciale.index', ['clients' => Client::with('typeClient')->orderBy('date_creation', 'desc')->paginate(25)]);
+        return view('admin.apps.commerciale.client.index', ['clients' => Client::with('typeClient')->orderBy('date_creation', 'desc')->get()]);
     }
 
     /**
@@ -30,7 +30,7 @@ class ClientController extends Controller
         $postes = Poste::all();
         $client = new Client();
         
-        return view('admin.apps.commerciale.form', ['client' => $client, 'typeClients' => $typeClients, 'typeEntreprises' => $typeEntreprises, 'postes' => $postes]);
+        return view('admin.apps.commerciale.client.form', ['client' => $client, 'typeClients' => $typeClients, 'typeEntreprises' => $typeEntreprises, 'postes' => $postes]);
     }
 
     /**
@@ -53,7 +53,7 @@ class ClientController extends Controller
         $typeEntreprises = TypeEntreprise::all();
         $postes = Poste::all();
         
-        return view('admin.apps.commerciale.form', ['client' => $client, 'typeClients' => $typeClients, 'typeEntreprises' => $typeEntreprises, 'postes' => $postes]);
+        return view('admin.apps.commerciale.client.form', ['client' => $client, 'typeClients' => $typeClients, 'typeEntreprises' => $typeEntreprises, 'postes' => $postes]);
 
     }
 

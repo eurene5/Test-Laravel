@@ -35,11 +35,11 @@ class Client extends Model
     ];
 
     public function typeClient () : BelongsTo {
-        return $this->belongsTo(TypeClient::class, 'id_client');
+        return $this->belongsTo(TypeClient::class, 'id_type_client');
     }
 
     public function typeEntreprise () : BelongsTo {
-        return $this->belongsTo(TypeEntreprise::class, 'id_client');
+        return $this->belongsTo(TypeEntreprise::class, 'id_type_entreprise');
     }
 
     public $timestamps = false;
