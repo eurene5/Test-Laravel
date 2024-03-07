@@ -1,23 +1,24 @@
-@extends('layouts.admin.master')
 
-@section('title')Ventes
- {{ $title }}
-@endsection
 
-@push('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/slick.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/slick-theme.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/rating.css')}}">
-@endpush
+<?php $__env->startSection('title'); ?>Ventes
+ <?php echo e($title); ?>
 
-@section('content')
-	@component('components.breadcrumb')
-		@slot('breadcrumb_title')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('css'); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/slick.css')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/slick-theme.css')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/rating.css')); ?>">
+<?php $__env->stopPush(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<?php $__env->startComponent('components.breadcrumb'); ?>
+		<?php $__env->slot('breadcrumb_title'); ?>
 			<h3>Ventes</h3>
-		@endslot
+		<?php $__env->endSlot(); ?>
 		<li class="breadcrumb-item">Commerciale</li>
 		<li class="breadcrumb-item active">vente</li>
-	@endcomponent
+	<?php echo $__env->renderComponent(); ?>
 	
 	<div class="container-fluid">
 	    <div>
@@ -28,18 +29,18 @@
 	                        <div class="row">
 	                            <div class="col-xl-9 product-main">
 	                                <div class="pro-slide-single">
-                                        @foreach ($images as $image)
-                                            <div><img class="img-fluid" src="{{asset($image->chemin)}}" alt="" /></div>
-                                        @endforeach
+                                        <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div><img class="img-fluid" src="<?php echo e(asset($image->chemin)); ?>" alt="" /></div>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	                                </div>
 	                            </div>
 	                            <div class="col-xl-3 product-thumbnail">
 	                                <div class="pro-slide-right">
-                                        @foreach ($images as $image)
+                                        <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <div>
-                                                <div class="slide-box"><img src="{{asset($image->chemin)}}" alt="" /></div>
+                                                <div class="slide-box"><img src="<?php echo e(asset($image->chemin)); ?>" alt="" /></div>
                                             </div>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -51,7 +52,7 @@
 	                    <div class="card-body">
 	                        <div class="pro-group pt-0 border-0">
 	                            <div class="product-page-details mt-0">
-	                                <h3>{{ $produitFini->libelle }}.</h3>
+	                                <h3><?php echo e($produitFini->libelle); ?>.</h3>
 	                                <div class="pro-review">
 	                                    <div class="d-flex">
 	                                        <select id="u-rating-fontawesome" name="rating" autocomplete="off">
@@ -65,16 +66,16 @@
 	                                </div>
 	                            </div>
 	                            <div class="product-price">
-	                                {{ $produitFini->montant_stock }}.00 MGA
+	                                <?php echo e($produitFini->montant_stock); ?>.00 MGA
 	                                <del>350.00 MGA</del>
 	                            </div>
 	                            <ul class="product-color">
-                                    {{-- couleur de la peinture --}}
-	                                <li style="background-color: {{ $produitFini->code_couleur }};border: 0.3px solid #010101;"></li>
+                                    
+	                                <li style="background-color: <?php echo e($produitFini->code_couleur); ?>;border: 0.3px solid #010101;"></li>
 	                            </ul>
 	                        </div>
 	                        <div class="pro-group">
-	                            <p>{{ $produitFini->details }}. </p>
+	                            <p><?php echo e($produitFini->details); ?>. </p>
 	                        </div>
 	                        <div class="pro-group">
 	                            <div class="row">
@@ -84,12 +85,12 @@
 	                                            <tr>
 	                                                <td><b>Référence</b></td>
 	                                                <td><b>&nbsp;:&nbsp;</b></td>
-	                                                <td>{{ $produitFini->reference_produit_sfepi }}</td>
+	                                                <td><?php echo e($produitFini->reference_produit_sfepi); ?></td>
 	                                            </tr>
 	                                            <tr>
 	                                                <td><b>En stock</b></td>
 	                                                <td><b>&nbsp;:&nbsp;</b></td>
-	                                                <td>{{ $produitFini->stock_actualise }}</td>
+	                                                <td><?php echo e($produitFini->stock_actualise); ?></td>
 	                                            </tr>
 	                                            <tr>
 	                                                <td><b>Commande min</b></td>
@@ -99,7 +100,7 @@
 	                                            <tr>
 	                                                <td><b>Couleur</b></td>
 	                                                <td><b>&nbsp;:&nbsp;</b></td>
-	                                                <td>{{ $produitFini->couleur }}</td>
+	                                                <td><?php echo e($produitFini->couleur); ?></td>
 	                                            </tr>
 	                                        </tbody>
 	                                    </table>
@@ -110,17 +111,17 @@
                                                 <tr>
 	                                                <td><b>Prix BtoB</b></td>
                                                     <td><b>&nbsp;:&nbsp;</b></td>
-	                                                <td>{{ $produitFini->montant_stock - ($produitFini->montant_stock * 0.02) }}</td>
+	                                                <td><?php echo e($produitFini->montant_stock - ($produitFini->montant_stock * 0.02)); ?></td>
 	                                            </tr>
 	                                            <tr>
 	                                                <td><b>Prix BtoC</b></td>
                                                     <td><b>&nbsp;:&nbsp;</b></td>
-	                                                <td>{{ $produitFini->montant_stock }}</td>
+	                                                <td><?php echo e($produitFini->montant_stock); ?></td>
 	                                            </tr>
 	                                            <tr>
 	                                                <td><b>Fournisseur</b></td>
                                                     <td><b>&nbsp;:&nbsp;</b></td>
-	                                                <td>{{ $fournisseur->nom_contact }}</td>
+	                                                <td><?php echo e($fournisseur->nom_contact); ?></td>
 	                                            </tr>
 	                                        </tbody>
 	                                    </table>
@@ -153,19 +154,23 @@
 	                <div class="tab-content" id="top-tabContent">
 	                    <div class="tab-pane fade active show" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
 	                        <p class="mb-0 m-t-20">
-	                            Taille du produit : {{ $produitFini->longueur }} x {{ $produitFini->largeur }} x {{ $produitFini->hauteur }} cm
+	                            Taille du produit : <?php echo e($produitFini->longueur); ?> x <?php echo e($produitFini->largeur); ?> x <?php echo e($produitFini->hauteur); ?> cm
 	                        </p>
                             <p class="mb-0">
-                                Date de première disponibilité : {{ date('d F Y', strtotime($produitFini->date_fabrication)) }}
+                                Date de première disponibilité : <?php echo e(date('d F Y', strtotime($produitFini->date_fabrication))); ?>
+
                             </p>
                             <p class="mb-0">
-                                Fournisseur : {{ $fournisseur->nom_contact }}
+                                Fournisseur : <?php echo e($fournisseur->nom_contact); ?>
+
                             </p>
                             <p class="mb-0">
-                                Référence produit (coté fournisseur) : {{ $produitFini->reference_produit_fournisseur }}
+                                Référence produit (coté fournisseur) : <?php echo e($produitFini->reference_produit_fournisseur); ?>
+
                             </p>
                             <p class="mb-0">
-                                Référence produit (coté sfepi) : {{ $produitFini->reference_produit_sfepi }}
+                                Référence produit (coté sfepi) : <?php echo e($produitFini->reference_produit_sfepi); ?>
+
                             </p>
 	                    </div>
 	                    <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
@@ -189,11 +194,12 @@
 	</div>
 
 	
-	@push('scripts')
-	<script src="{{asset('assets/js/rating/jquery.barrating.js')}}"></script>
-    <script src="{{asset('assets/js/rating/rating-script.js')}}"></script>
-    <script src="{{asset('assets/js/slick-slider/slick.min.js')}}"></script>
-    <script src="{{asset('assets/js/slick-slider/slick-theme.js')}}"></script>
-	@endpush
+	<?php $__env->startPush('scripts'); ?>
+	<script src="<?php echo e(asset('assets/js/rating/jquery.barrating.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/rating/rating-script.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/slick-slider/slick.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/slick-slider/slick-theme.js')); ?>"></script>
+	<?php $__env->stopPush(); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Poem\Documents\Projets\viho-laravel-10\resources\views/admin/apps/commerciale/commande/produit-fini/show.blade.php ENDPATH**/ ?>

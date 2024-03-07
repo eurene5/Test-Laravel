@@ -277,7 +277,7 @@
 							<div class="card">
 								<div class="product-box">
 									<div class="product-img">
-										<img class="img-fluid" src="<?php echo e(asset('assets/images/ecommerce/01.jpg')); ?>" alt="" />
+										<img class="img-fluid" src="<?php echo e($produitFini->images->isNotEmpty() ? asset($produitFini->images[0]->chemin) : asset('assets/images/ecommerce/01.jpg')); ?>" alt="<?php echo e($produitFini->libelle); ?>" />
 										<div class="product-hover">
 											<ul>
 												<li>
@@ -294,9 +294,12 @@
 											<div class="modal-content">
 												<div class="modal-header">
 													<div class="product-box row">
-														<div class="product-img col-lg-6"><img class="img-fluid" src="<?php echo e(asset('assets/images/ecommerce/01.jpg')); ?>" alt="" /></div>
+														<div class="product-img col-lg-6"><img class="img-fluid" src="<?php echo e($produitFini->images->isNotEmpty() ? asset($produitFini->images[0]->chemin) : asset('assets/images/ecommerce/01.jpg')); ?>" alt="<?php echo e($produitFini->libelle); ?>" /></div>
 														<div class="product-details col-lg-6 text-start">
-															<a href="product-page"> <h4><?php echo e($produitFini->libelle); ?></h4></a>
+															<a href="<?php echo e(route('commerciale.vente.show', $produitFini)); ?>">
+																<h4><?php echo e($produitFini->libelle); ?></h4>
+																<span class="fs-6">Réf : <?php echo e($produitFini->reference_produit_sfepi); ?></span>
+															</a>
 															<div class="product-price">
 																<?php echo e($produitFini->montant_stock); ?> MGA
 																<del>35.00 MGA</del>
@@ -319,13 +322,13 @@
 																</ul>
 															</div>
 															<div class="product-qnty">
-																<h6 class="f-w-600">Quantity</h6>
+																<h6 class="f-w-600">Quantité</h6>
 																<fieldset>
 																	<div class="input-group">
 																		<input class="touchspin text-center" type="text" value="5" />
 																	</div>
 																</fieldset>
-																<div class="addcart-btn"><a class="btn btn-primary me-3" href="cart">Ajouter au Panier </a><a class="btn btn-primary" href="product-page">Voir les Détails</a></div>
+																<div class="addcart-btn"><a class="btn btn-primary me-3" href="cart">Ajouter au Panier </a><a class="btn btn-primary" href="<?php echo e(route('commerciale.vente.show', $produitFini)); ?>">Voir les Détails</a></div>
 															</div>
 														</div>
 													</div>
@@ -335,7 +338,11 @@
 										</div>
 									</div>
 									<div class="product-details">
-										<a href="product-page"> <h4><?php echo e($produitFini->libelle); ?></h4></a>
+										<a href="<?php echo e(route('commerciale.vente.show', $produitFini)); ?>">
+											<h4><?php echo e($produitFini->libelle); ?></h4>
+											
+											<span class="fs-6">Réf : <?php echo e($produitFini->reference_produit_sfepi); ?></span>
+										</a>
 										<p><?php echo e($produitFini->typeProduit?->libelle); ?></p>
 										<div class="product-price">
 											<?php echo e($produitFini->montant_stock); ?> MGA
@@ -346,7 +353,6 @@
 							</div>
 						</div>
 					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
 	            </div>
 	        </div>
 	    </div>

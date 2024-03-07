@@ -218,6 +218,7 @@ Route::prefix('users')->group( function(){
 Route::prefix('commerciale')->name('commerciale.')->group( function() {
 	Route::resource('client', ClientController::class)->except(('show'));
 	Route::get('vente', [VenteController::class, 'index'])->name('vente.index');
+	Route::get('vente/{produitFini}', [VenteController::class, 'show'])->name('vente.show');
 });
 
 Route::view('bookmark', 'admin.apps.bookmark')->name('bookmark');
