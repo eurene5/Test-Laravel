@@ -42,4 +42,19 @@ class ClientRequest extends FormRequest
             'commentaire' => ['required', 'string', 'max:500'],
         ];
     }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'id_type_client' => (int)$this->id_type_client,
+            'id_type_entreprise' => (int)$this->id_type_entreprise,
+        ]);
+    }
+
+    public function messages(): array 
+    {
+        return [
+            'required' => 'Ce champ est obligatoire'
+        ];
+    }
 }
