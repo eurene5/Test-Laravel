@@ -36,12 +36,12 @@
 									@include('shared.input', ['class' => 'col-sm-6 col-md-3', 'label' => 'Nif & Stat', 'name' => 'nif_stat', 'placeholder' => '4 000 587 22', 'value' => $client->nif_stat])
 									@include('shared.input', ['class' => 'col-sm-6 col-md-4', 'label' => 'BIC', 'name' => 'bic', 'placeholder' => 'Bic', 'value' => $client->bic])
 								</div>
-								<div class="row">
+								<div class="row border-bottom">
 									@include('shared.select', ['class' => 'col-sm-6 col-md-4', 'label' => 'Type d\'entreprise', 'name' => 'id_type_entreprise', 'options' => $typeEntreprises, 'value' => $client->id_type_entreprise])
 									@include('shared.select', ['class' => 'col-sm-6 col-md-4', 'label' => 'Type de client', 'name' => 'id_type_client', 'options' => $typeClients, 'value' => $client->id_type_client])
 									@include('shared.check', ['class' => 'col-sm-6 col-md-4 pt-5', 'label' => 'Accepte email marketing', 'name' => 'accepte_mail_marketing', 'value' => $client->accepte_mail_marketing])
 								</div>
-                                <div class="row border-top border-bottom py-2 my-2">
+                                <div class="row border-bottom py-2 my-2">
 									@include('shared.input', ['class' => 'col-sm-6 col-md-4', 'label' => 'Nom', 'name' => 'nom', 'placeholder' => 'Nom de famille', 'value' => $client->nom])
 									@include('shared.input', ['class' => 'col-sm-6 col-md-4', 'label' => 'Prénom', 'name' => 'prenom', 'value' => $client->prenom])
 									@include('shared.select', ['class' => 'col-sm-6 col-md-4', 'label' => 'Poste', 'name' => 'poste_contact', 'options' => $postes, 'value' => $client->poste_contact])
@@ -57,7 +57,7 @@
 									@include('shared.input', ['class' => 'col-sm-6 col-md-5', 'label' => 'Adresse voie', 'placeholder' => "Voie", 'name' => 'adresse_voie', 'value' => $client->adresse_voie])
 									@include('shared.input', ['class' => 'col-sm-6 col-md-5', 'label' => 'Adresse complement', 'placeholder' => "Complément d'adresse", 'name' => 'adresse_complement', 'value' => $client->adresse_complement])
 								</div>
-								<div class="row">
+								<div class="row border-bottom">
 									@include('shared.input', ['class' => 'col-sm-6 col-md-4', 'label' => 'Ville', 'name' => 'adresse_ville', 'value' => $client->adresse_ville])
 									@include('shared.input', ['class' => 'col-sm-6 col-md-3', 'label' => 'Code postal', 'name' => 'adresse_code_postal', 'value' => $client->adresse_code_postal])
 									<div class="mb-3 col-md-5">
@@ -70,12 +70,12 @@
 	                                    </select>
 	                                </div>
 								</div>
-                                <div class="row border-top py-2 my-2">
+                                <div class="row py-2 mb-2">
 									@include('shared.input', ['type' => 'textarea', 'class' => 'col-md-12', 'label' => 'Commentaire', 'name' => 'commentaire', 'value' => $client->commentaire])
                                 </div>
 	                        </div>
 	                    </div>
-	                    <div class="card-footer text-end">
+	                    <div class="card-footer border-top text-end">
 							@if ($client->exists)
 								@include('shared.btn-modal', ['btn' => 'btn-primary', 'action' => 'Enregistrer', 'id' => "update"])
 							@else
