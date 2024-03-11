@@ -10,10 +10,10 @@
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3 class="text-capitalize">Enregistrer un client</h3>
+			<h3 class="text-capitalize">{{ $client->exists ? 'Modifier' : 'Enregistrer'}} un client</h3>
 		@endslot
 		<li class="breadcrumb-item">Clients</li>
-		<li class="breadcrumb-item active text-capitalize">Créer un client</li>
+		<li class="breadcrumb-item active text-capitalize">{{ $client->exists ? 'Editer' : 'Créer'}} un client</li>
 	@endcomponent
 	
 	<div class="container-fluid">
