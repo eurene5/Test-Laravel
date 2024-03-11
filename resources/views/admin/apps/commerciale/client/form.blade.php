@@ -12,7 +12,7 @@
 		@slot('breadcrumb_title')
 			<h3 class="text-capitalize">{{ $client->exists ? 'Modifier' : 'Enregistrer'}} un client</h3>
 		@endslot
-		<li class="breadcrumb-item">Clients</li>
+		<li class="breadcrumb-item">Client</li>
 		<li class="breadcrumb-item active text-capitalize">{{ $client->exists ? 'Editer' : 'Créer'}} un client</li>
 	@endcomponent
 	
