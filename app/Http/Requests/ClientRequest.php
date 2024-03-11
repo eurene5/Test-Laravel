@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ClientRequest extends FormRequest
 {
@@ -30,8 +31,25 @@ class ClientRequest extends FormRequest
             'adresse_complement' => ['nullable', 'string', 'max:45'],
             'adresse_ville' => ['required', 'string', 'max:45'],
             'adresse_pays' => ['required', 'string', 'max:45'],
-            'telephone' => ['required', 'string', 'max:45'],
-            'email' => ['required', 'email', 'max:45'],
+            'telephone' => [
+                'required',
+                'string',
+                'min:10',
+                'max:13',
+                function ($attribute, $value, $fail) {
+                    // Valider que le numéro est au format local ou international
+                    if (!preg_match('/^\+?\d+$/', $value)) {
+                        $fail('Le numéro de téléphone doit être au format local ou international.');
+                    }
+                },
+                Rule::unique('sfepi_client')->ignore(auth()->id())
+            ],
+            'email' => [
+                'required',
+                'email',
+                'max:45', 
+                Rule::unique('sfepi_client')->ignore(auth()->id())
+            ],
             'raison_social' => ['required', 'string', 'max:100'],
             'nif_stat' => ['required', 'string', 'max:60'],
             'bic' => ['required', 'string', 'max:45'],
@@ -48,6 +66,8 @@ class ClientRequest extends FormRequest
         $this->merge([
             'id_type_client' => (int)$this->id_type_client,
             'id_type_entreprise' => (int)$this->id_type_entreprise,
+            'nom' => ucwords(strtolower($this->nom)),
+            'prenom' => ucwords(strtolower($this->prenom)),
         ]);
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" <?php if(Route::current()->getName() == 'layout-rtl'): ?> dir="rtl" <?php endif; ?>
+<html lang="en" <?php if(Route::current()->getName() == 'layout-rtl'): ?> dir="rtl" <?php endif; ?>
     <?php switch(Route::current()->getName()):
       case ('layout-rtl'): ?>
           dir="rtl"
