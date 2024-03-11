@@ -2,8 +2,15 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\VenteController;
-use App\Models\Client;
 use Illuminate\Support\Facades\Route;
+
+// Route pour le module client
+Route::prefix('commerciale')->name('commerciale.')->group( function() {
+	Route::resource('client', ClientController::class)->except(('show'));
+	Route::get('vente', [VenteController::class, 'index'])->name('vente.index');
+	Route::get('vente/{produitFini}', [VenteController::class, 'show'])->name('vente.show');
+});
+// Fin du route pour le module client
 
 Route::prefix('admin')->group(function () {
 });
@@ -213,12 +220,6 @@ Route::prefix('users')->group( function(){
 	Route::view('user-profile', 'admin.apps.user-profile')->name('user-profile');
 	Route::view('edit-profile', 'admin.apps.edit-profile')->name('edit-profile');
 	Route::view('user-cards', 'admin.apps.user-cards')->name('user-cards');
-});
-
-Route::prefix('commerciale')->name('commerciale.')->group( function() {
-	Route::resource('client', ClientController::class)->except(('show'));
-	Route::get('vente', [VenteController::class, 'index'])->name('vente.index');
-	Route::get('vente/{produitFini}', [VenteController::class, 'show'])->name('vente.show');
 });
 
 Route::view('bookmark', 'admin.apps.bookmark')->name('bookmark');

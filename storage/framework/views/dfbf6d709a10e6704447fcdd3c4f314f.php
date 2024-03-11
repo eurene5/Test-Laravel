@@ -83,12 +83,12 @@
 								<button class="btn btn-primary">Ajouter ce client</button>
 							<?php endif; ?>
 	                    </div>
+						<?php echo $__env->make('shared.modal', [ 'action' => 'Enregistrer', 'id' => "update", 'target' => $client, 'message' => 'Etes-vous sûr de modifier ce client ?'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	                </form>
 	            </div>
 	        </div>
 	    </div>
 	</div>
-	<?php echo $__env->make('shared.modal', [ 'action' => 'Enregistrer', 'id' => "update", 'target' => $client, 'message' => 'Etes-vous sûr de modifier ce client ?'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	
 	<?php $__env->startPush('scripts'); ?>
 	<?php $__env->stopPush(); ?>

@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('title')Clients
+@section('title')Client
  {{ $title }}
 @endsection
 
@@ -12,9 +12,9 @@
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>Clients</h3>
+			<h3>Consultation de tous les clients</h3>
 		@endslot
-		<li class="breadcrumb-item">Clients</li>
+		<li class="breadcrumb-item">Client</li>
 		<li class="breadcrumb-item active">Liste des clients</li>
 	@endcomponent
 	

@@ -7,7 +7,6 @@ use App\Models\Client;
 use App\Models\Poste;
 use App\Models\TypeClient;
 use App\Models\TypeEntreprise;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ClientController extends Controller
@@ -17,7 +16,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('admin.apps.commerciale.client.index', ['clients' => Client::with(['typeClient', 'images'])->orderBy('date_creation', 'desc')->get()]);
+        return view('admin.apps.commerciale.client.index', ['clients' => Client::with(['typeClient'])->orderBy('date_creation', 'desc')->get()]);
     }
 
     /**

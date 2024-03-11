@@ -82,12 +82,12 @@
 								<button class="btn btn-primary">Ajouter ce client</button>
 							@endif
 	                    </div>
+						@include('shared.modal', [ 'action' => 'Enregistrer', 'id' => "update", 'target' => $client, 'message' => 'Etes-vous sûr de modifier ce client ?'])
 	                </form>
 	            </div>
 	        </div>
 	    </div>
 	</div>
-	@include('shared.modal', [ 'action' => 'Enregistrer', 'id' => "update", 'target' => $client, 'message' => 'Etes-vous sûr de modifier ce client ?'])
 	
 	@push('scripts')
 	@endpush

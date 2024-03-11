@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?>Clients
+<?php $__env->startSection('title'); ?>Client
  <?php echo e($title); ?>
 
 <?php $__env->stopSection(); ?>
@@ -13,9 +13,9 @@
 <?php $__env->startSection('content'); ?>
 	<?php $__env->startComponent('components.breadcrumb'); ?>
 		<?php $__env->slot('breadcrumb_title'); ?>
-			<h3>Clients</h3>
+			<h3>Consultation de tous les clients</h3>
 		<?php $__env->endSlot(); ?>
-		<li class="breadcrumb-item">Clients</li>
+		<li class="breadcrumb-item">Client</li>
 		<li class="breadcrumb-item active">Liste des clients</li>
 	<?php echo $__env->renderComponent(); ?>
 	

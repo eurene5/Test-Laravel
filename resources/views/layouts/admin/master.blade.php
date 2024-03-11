@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" @if (Route::current()->getName() == 'layout-rtl') dir="rtl" @endif
+<html lang="fr" @if (Route::current()->getName() == 'layout-rtl') dir="rtl" @endif
     @switch(Route::current()->getName())
       @case('layout-rtl')
           dir="rtl"
